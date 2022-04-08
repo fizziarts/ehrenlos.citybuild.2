@@ -8,12 +8,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class KillCommand implements CommandExecutor {
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender.hasPermission("ehrenlos.kill")){
+        if (sender.hasPermission("ehrenlos.kill")) {
             Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
             targetPlayer.damage(20);
-        }else{
+        } else {
             sender.sendMessage(Citybuild.getPrefix() + "Du hast kein Recht diesen Befehl auszuführen!");
         }
         return false;

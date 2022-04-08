@@ -49,11 +49,9 @@ public class GamemodeCommand implements CommandExecutor {
                     } else {
                         player.sendMessage(Citybuild.getPrefix() + "Bitte benutze /gm 0, 1, 2, 3");
                     }
-                    return false;
                 }
             }
-            return false;
-        }else{
+        } else {
             sender.sendMessage(Citybuild.getPrefix() + "Du hast dafür keine Rechte.");
         }
         return false;

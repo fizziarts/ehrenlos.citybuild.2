@@ -9,11 +9,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class FlyCommand implements CommandExecutor {
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         final Player player = (Player) sender;
 
-        try{
+        try {
             if (player.hasPermission("ehrenlos.admin.fly")) {
                 Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
                 if (targetPlayer.isFlying()) {
@@ -26,7 +27,7 @@ public class FlyCommand implements CommandExecutor {
                     targetPlayer.setFlying(true);
                 }
             }
-        } catch (Exception exception){
+        } catch (Exception exception) {
             if (player.hasPermission("ehrenlos.fly")) {
                 if (player.isFlying()) {
                     player.getPlayer().sendMessage(Citybuild.getPrefix() + "Du befindest dich nicht mehr im Flugmodus!");

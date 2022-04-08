@@ -15,17 +15,17 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Arrays;
 
 public class DutyMenuListener implements Listener {
+
     @EventHandler
-    public void onClick(InventoryClickEvent e){
-        if (ChatColor.translateAlternateColorCodes('&', e.getView().getTitle()).equals(ChatColor.RED.toString() + "Admin Tools!")
-            && e.getCurrentItem() != null){
+    public void onInventoryClick(InventoryClickEvent e) {
+        if (e.getView().getTitle().equals(ChatColor.RED + "Admin Tools!") && e.getCurrentItem() != null) {
 
             e.setCancelled(true);
             Player player = (Player) e.getWhoClicked();
 
             switch (e.getRawSlot()) {
                 case 3:
-                    Inventory inv1 = Bukkit.createInventory(player, 9, ChatColor.RED.toString() + "World Settings!");
+                    Inventory inv1 = Bukkit.createInventory(player, 9, ChatColor.RED + "World Settings!");
                     //Items
                     ItemStack day = new ItemStack(Material.GOLD_INGOT);
                     ItemMeta metaDay = day.getItemMeta();
@@ -75,10 +75,10 @@ public class DutyMenuListener implements Listener {
                     close.setItemMeta(metaClose);
                     inv1.setItem(8, close);
 
-                    ((Player) player).openInventory(inv1);
+                    player.openInventory(inv1);
                     break;
                 case 4:
-                    Inventory inv2 = Bukkit.createInventory(player, 9, ChatColor.RED.toString() + "Player Commands!");
+                    Inventory inv2 = Bukkit.createInventory(player, 9, ChatColor.RED + "Player Commands!");
 
                     try {
                         if (player.getGameMode() == GameMode.SURVIVAL) {
@@ -98,8 +98,8 @@ public class DutyMenuListener implements Listener {
                             gm.setItemMeta(metaGM);
                             inv2.setItem(0, gm);
                         }
-                    } finally {
-
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
                     }
 
                     ItemStack fly = new ItemStack(Material.FEATHER);
@@ -119,18 +119,14 @@ public class DutyMenuListener implements Listener {
                     inv2.setItem(8, close2);
 
                     player.openInventory(inv2);
-                    ((Player) player).openInventory(inv2);
                     break;
                 case 5:
-                    Inventory inv3 = Bukkit.createInventory(player, 9, ChatColor.RED.toString() + "Ehrenloser Stuff!");
+                    Inventory inv3 = Bukkit.createInventory(player, 9, ChatColor.RED + "Ehrenloser Stuff!");
                     player.openInventory(inv3);
-                    ((Player) player).openInventory(inv3);
                     break;
                 case 8://Close
                     player.closeInventory();
-                    return;
-                default:
-                    return;
+                    break;
             }
         }
     }

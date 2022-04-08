@@ -7,40 +7,38 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import java.util.List;
-
 public class DutyMenu2Listener implements Listener {
+
     @EventHandler
-    public void onClick(InventoryClickEvent e){
-        if (ChatColor.translateAlternateColorCodes('&', e.getView().getTitle()).equals(ChatColor.RED.toString() + "Player Commands!")
-                && e.getCurrentItem() != null){
+    public void onInventoryClick(InventoryClickEvent e) {
+        if (e.getView().getTitle().equals(ChatColor.RED + "Player Commands!") && e.getCurrentItem() != null) {
 
             e.setCancelled(true);
             Player player = (Player) e.getWhoClicked();
 
-            switch (e.getRawSlot()){
+            switch (e.getRawSlot()) {
                 case 0:
-                    try{
-                        if(player.getGameMode() == GameMode.SURVIVAL){
+                    try {
+                        if (player.getGameMode() == GameMode.SURVIVAL) {
                             player.setGameMode(GameMode.CREATIVE);
-                        }else{
+                        } else {
                             player.setGameMode(GameMode.SURVIVAL);
                         }
-                    }finally {
-
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
                     }
                     break;
                 case 1:
-                    try{
-                        if (player.isFlying()){
+                    try {
+                        if (player.isFlying()) {
                             player.getPlayer().setAllowFlight(false);
                             player.setFlying(false);
-                        }else{
+                        } else {
                             player.getPlayer().setAllowFlight(true);
                             player.setFlying(true);
                         }
-                    }finally {
-
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
                     }
                     break;
                 case 2:
@@ -48,9 +46,7 @@ public class DutyMenu2Listener implements Listener {
                     break;
                 case 8://Close
                     player.closeInventory();
-                    return;
-                default:
-                    return;
+                    break;
             }
         }
     }

@@ -6,7 +6,6 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -15,12 +14,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Arrays;
 
 public class DutyMenu implements CommandExecutor {
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
         final Player player = (Player) sender;
 
-        org.bukkit.inventory.Inventory inv = Bukkit.createInventory(player, 9, ChatColor.RED.toString() + "Admin Tools!");
+        Inventory inv = Bukkit.createInventory(player, 9, ChatColor.RED + "Admin Tools!");
 
         ItemStack glass = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
         glass.setItemMeta(null);
@@ -78,7 +77,7 @@ public class DutyMenu implements CommandExecutor {
         close.setItemMeta(meta1);
         inv.setItem(8, close);
 
-        ((Player) sender).openInventory(inv);
+        player.openInventory(inv);
         return false;
     }
 }

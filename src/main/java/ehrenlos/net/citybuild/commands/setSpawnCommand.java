@@ -7,23 +7,18 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class setSpawnCommand implements CommandExecutor {
-    private Citybuild ehre;
-
-    public setSpawnCommand(Citybuild ehre) {
-        this.ehre = ehre;
-    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            ehre.getConfig().set("Spawn" + ".world", player.getWorld().getName());
-            ehre.getConfig().set("Spawn" + ".x", player.getLocation().getX());
-            ehre.getConfig().set("Spawn" + ".y", player.getLocation().getY());
-            ehre.getConfig().set("Spawn" + ".z", player.getLocation().getZ());
-            ehre.saveConfig();
-            ehre.reloadConfig();
+            Citybuild.getInstance().getConfig().set("Spawn" + ".world", player.getWorld().getName());
+            Citybuild.getInstance().getConfig().set("Spawn" + ".x", player.getLocation().getX());
+            Citybuild.getInstance().getConfig().set("Spawn" + ".y", player.getLocation().getY());
+            Citybuild.getInstance().getConfig().set("Spawn" + ".z", player.getLocation().getZ());
+            Citybuild.getInstance().saveConfig();
+            Citybuild.getInstance().reloadConfig();
         }
         return false;
     }

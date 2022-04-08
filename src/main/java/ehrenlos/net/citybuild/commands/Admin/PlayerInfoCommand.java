@@ -1,6 +1,5 @@
 package ehrenlos.net.citybuild.commands.Admin;
 
-import ehrenlos.net.citybuild.Citybuild;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -9,11 +8,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class PlayerInfoCommand implements CommandExecutor {
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         final Player player = (Player) sender;
         Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
-        try{
+        try {
             String inet = targetPlayer.getAddress().toString();
             String ping = String.valueOf(targetPlayer.getPing());
             String name = targetPlayer.getName();
@@ -26,8 +26,8 @@ public class PlayerInfoCommand implements CommandExecutor {
                     ChatColor.GOLD + "\n\nWorld: " + ChatColor.WHITE + world +
                     ChatColor.GOLD + "\nPos: " + ChatColor.WHITE + loc +
                     ChatColor.GOLD + "\nSpawn: " + ChatColor.WHITE + bed);
-        }catch (Exception exception){
-            sender.sendMessage(Citybuild.getPrefix() + exception);
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
         return false;
     }
