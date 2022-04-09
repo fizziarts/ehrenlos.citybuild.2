@@ -13,13 +13,13 @@ public class DayCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         final Player player = (Player) sender;
-        if (player.hasPermission("ehrenlos.daynight")) {
+        if (player.hasPermission("citybuild.command.day")) {
             for (World world : Bukkit.getWorlds()) {
                 world.setTime(1000);
             }
-            sender.sendMessage(Citybuild.getPrefix() + "Die Zeit wurde auf 1000 gestellt.");
+            sender.sendMessage(Citybuild.getPrefix() + "§aDie Zeit wurde auf Tag gestellt.");
         } else {
-            sender.sendMessage(Citybuild.getPrefix() + "Du hast dafür keine Rechte.");
+            sender.sendMessage(Citybuild.getPrefix() + Citybuild.getNoPermissions());
         }
         return false;
     }

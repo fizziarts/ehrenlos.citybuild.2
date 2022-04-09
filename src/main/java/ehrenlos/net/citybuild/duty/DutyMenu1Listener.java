@@ -1,6 +1,5 @@
 package ehrenlos.net.citybuild.duty;
 
-import org.bukkit.ChatColor;
 import org.bukkit.WeatherType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,7 +10,7 @@ public class DutyMenu1Listener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
-        if (e.getView().getTitle().equals(ChatColor.RED + "World Settings!") && e.getCurrentItem() != null) {
+        if (e.getView().getTitle().equals("§4World Settings!") && e.getCurrentItem() != null) {
 
             e.setCancelled(true);
             Player player = (Player) e.getWhoClicked();

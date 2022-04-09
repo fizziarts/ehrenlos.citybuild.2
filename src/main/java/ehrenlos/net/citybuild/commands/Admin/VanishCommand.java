@@ -12,7 +12,7 @@ public class VanishCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         final Player player = (Player) sender;
-        if (player.hasPermission("ehrenlos.vanish")) {
+        if (player.hasPermission("citybuild.command.vanish")) {
             if (player.isInvisible()) {
                 player.setInvisible(false);
                 sender.sendMessage(Citybuild.getPrefix() + "Du bist nun wieder sichtbar.");
@@ -23,7 +23,7 @@ public class VanishCommand implements CommandExecutor {
                 player.playSound(player.getLocation(), Sound.BLOCK_BAMBOO_BREAK, 1, 1);
             }
         } else {
-            sender.sendMessage(Citybuild.getPrefix() + "Du hast dafür keine Rechte.");
+            sender.sendMessage(Citybuild.getPrefix() + Citybuild.getNoPermissions());
         }
         return false;
     }

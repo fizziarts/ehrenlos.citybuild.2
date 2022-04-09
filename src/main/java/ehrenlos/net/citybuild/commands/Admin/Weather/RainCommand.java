@@ -12,11 +12,11 @@ public class RainCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         final Player player = (Player) sender;
-        if (player.hasPermission("ehrenlos.sunrain")) {
+        if (player.hasPermission("citybuild.command.rain")) {
             player.setPlayerWeather(WeatherType.DOWNFALL);
-            sender.sendMessage(Citybuild.getPrefix() + "Das Wetter wurde auf Regen gestellt.");
+            player.sendMessage(Citybuild.getPrefix() + "§aDas Wetter wurde auf Regen gestellt.");
         } else {
-            sender.sendMessage(Citybuild.getPrefix() + "Du hast dafür keine Rechte.");
+            sender.sendMessage(Citybuild.getPrefix() + Citybuild.getNoPermissions());
         }
         return false;
     }

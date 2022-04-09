@@ -5,6 +5,8 @@ import ehrenlos.net.citybuild.commands.Admin.Weather.*;
 import ehrenlos.net.citybuild.commands.Player.EnderCommand;
 import ehrenlos.net.citybuild.commands.Player.MsgCommand;
 import ehrenlos.net.citybuild.commands.Player.SpawnCommand;
+import ehrenlos.net.citybuild.commands.Player.playerhelpCommand;
+import ehrenlos.net.citybuild.commands.Warp.DelWarpCommand;
 import ehrenlos.net.citybuild.commands.Warp.SetWarpCommand;
 import ehrenlos.net.citybuild.commands.Warp.WarpCommand;
 import ehrenlos.net.citybuild.commands.setSpawnCommand;
@@ -24,6 +26,7 @@ public class Citybuild extends JavaPlugin {
 
     private static Citybuild instance;
     private static String prefix = "§8[§6EhrenlosNet§8] §r";
+    private static String noPermissions = "§4Du hast dazu keine Rechte";
 
     public static Citybuild getInstance() {
         return instance;
@@ -31,6 +34,10 @@ public class Citybuild extends JavaPlugin {
 
     public static String getPrefix() {
         return prefix;
+    }
+
+    public static String getNoPermissions() {
+        return noPermissions;
     }
 
     @Override
@@ -73,13 +80,13 @@ public class Citybuild extends JavaPlugin {
         getCommand("invsee").setExecutor(new InvseeCommand());
         getCommand("heal").setExecutor(new HealCommand());
         getCommand("teleport").setExecutor(new TeleportCommand());
-        getCommand("nick").setExecutor(new NickCommand());
         getCommand("whisper").setExecutor(new MsgCommand());
-        getCommand("dest").setExecutor(new KillCommand());
         getCommand("playerinfo").setExecutor(new PlayerInfoCommand());
         getCommand("setwarp").setExecutor(new SetWarpCommand());
         getCommand("warp").setExecutor(new WarpCommand());
         getCommand("setspawn").setExecutor(new setSpawnCommand());
         getCommand("duty").setExecutor(new DutyMenu());
+        getCommand("delwarp").setExecutor(new DelWarpCommand());
+        getCommand("playerhelp").setExecutor(new playerhelpCommand());
     }
 }

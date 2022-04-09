@@ -10,17 +10,27 @@ import org.bukkit.entity.Player;
 public class InvseeCommand implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(Citybuild.getPrefix() + "§cDu musst ein Spieler sein");
+            return false;
+        }
+
         final Player player = (Player) sender;
-        if (player.hasPermission("ehrenlos.invsee")) {
-            try {
-                Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
-                player.openInventory(targetPlayer.getInventory());
-            } catch (Exception exception) {
-                sender.sendMessage(Citybuild.getPrefix() + "Bitte wähle einen Spieler!");
+
+        if (cmd.getName().equalsIgnoreCase("invsee")) {
+            if (player.hasPermission("citybuild.command.invsee")) {
+                if (args.length != 1) {
+                    player.sendMessage(Citybuild.getPrefix() + "§7Bitte benutze §e/invsee <Name>");
+                }
+
+                if (args.length == 1) {
+                    Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
+                    player.openInventory(targetPlayer.getInventory());
+                }
+            } else {
+                sender.sendMessage(Citybuild.getPrefix() + Citybuild.getNoPermissions());
             }
-        } else {
-            sender.sendMessage(Citybuild.getPrefix() + "Du hast kein Recht diesen Befehl auszuführen!");
         }
         return false;
     }

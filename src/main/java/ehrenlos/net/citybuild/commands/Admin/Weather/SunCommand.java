@@ -12,11 +12,11 @@ public class SunCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         final Player player = (Player) sender;
-        if (player.hasPermission("ehrenlos.sunrain")) {
+        if (player.hasPermission("citybuild.command.sun")) {
             player.setPlayerWeather(WeatherType.CLEAR);
-            sender.sendMessage(Citybuild.getPrefix() + "Das Wetter wurde auf sonnig gestellt.");
+            sender.sendMessage(Citybuild.getPrefix() + "§aDas Wetter wurde auf Sonnig gestellt.");
         } else {
-            sender.sendMessage(Citybuild.getPrefix() + "Du hast dafür keine Rechte.");
+            sender.sendMessage(Citybuild.getPrefix() + Citybuild.getNoPermissions());
         }
         return false;
     }

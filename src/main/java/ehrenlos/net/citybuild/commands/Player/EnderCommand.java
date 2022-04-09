@@ -15,14 +15,14 @@ public class EnderCommand implements CommandExecutor {
         final Player player = (Player) sender;
 
         try {
-            if (player.hasPermission("ehrenlos.admin.enderchest")) {
+            if (player.hasPermission("citybuild.admin.enderchest")) {
                 Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
                 player.openInventory(targetPlayer.getEnderChest());
                 player.playEffect(EntityEffect.TELEPORT_ENDER);
                 player.playSound(player.getPlayer().getLocation(), Sound.BLOCK_ENDER_CHEST_OPEN, 1, 1);
             }
         } catch (Exception exception) {
-            if (player.hasPermission("ehrenlos.enderchest")) {
+            if (player.hasPermission("citybuild.enderchest")) {
                 player.openInventory(player.getEnderChest());
                 player.playEffect(EntityEffect.TELEPORT_ENDER);
                 player.playSound(player.getPlayer().getLocation(), Sound.BLOCK_ENDER_CHEST_OPEN, 1, 1);

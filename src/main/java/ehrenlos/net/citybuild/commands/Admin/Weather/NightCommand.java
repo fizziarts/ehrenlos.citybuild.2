@@ -13,13 +13,13 @@ public class NightCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         final Player player = (Player) sender;
-        if (player.hasPermission("ehrenlos.daynight")) {
+        if (player.hasPermission("citybuild.command.night")) {
             for (World world : Bukkit.getWorlds()) {
                 world.setTime(13000);
             }
-            sender.sendMessage(Citybuild.getPrefix() + "Die Zeit wurde auf 13000 gestellt.");
+            sender.sendMessage(Citybuild.getPrefix() + "§aDie Zeit wurde auf Nacht gestellt.");
         } else {
-            sender.sendMessage(Citybuild.getPrefix() + "Du hast dafür keine Rechte.");
+            sender.sendMessage(Citybuild.getPrefix() + Citybuild.getNoPermissions());
         }
         return false;
     }

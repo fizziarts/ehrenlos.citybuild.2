@@ -10,6 +10,8 @@ import org.bukkit.entity.Player;
 
 public class MsgCommand implements CommandExecutor {
 
+    //TODO Edit
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player player = (Player) sender;

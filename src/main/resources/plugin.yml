@@ -1,52 +1,30 @@
 name: citybuild
-version: '${project.version}'
+version: 1.0
 main: ehrenlos.net.citybuild.Citybuild
 api-version: 1.16
 
 commands:
   day:
-    description:
   night:
-    description:
   sun:
-    description:
   rain:
-    description:
   th:
-    description:
   fly:
-    description:
   gm:
-    description:
   heal:
-    description:
   invsee:
-    description:
   dest:
-    description:
   nick:
-    description:
   playerinfo:
-    description:
   teleport:
-    description:
   vanish:
-    description:
   ender:
-    description:
-  ehrenlos.help:
-    description:
+  playerhelp:
   whisper:
-    description:
   spawn:
-    description:
   setwarp:
-    description:
   warp:
-    description:
   setspawn:
-    description:
   duty:
-    description:
   troll:
-    description:
+  delwarp:

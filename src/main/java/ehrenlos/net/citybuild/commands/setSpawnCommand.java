@@ -17,6 +17,8 @@ public class setSpawnCommand implements CommandExecutor {
             Citybuild.getInstance().getConfig().set("Spawn" + ".x", player.getLocation().getX());
             Citybuild.getInstance().getConfig().set("Spawn" + ".y", player.getLocation().getY());
             Citybuild.getInstance().getConfig().set("Spawn" + ".z", player.getLocation().getZ());
+            Citybuild.getInstance().getConfig().set("Spawn" + ".YAW", player.getLocation().getYaw());
+            Citybuild.getInstance().getConfig().set("Spawn" + ".PITCH", player.getLocation().getPitch());
             Citybuild.getInstance().saveConfig();
             Citybuild.getInstance().reloadConfig();
         }

@@ -10,13 +10,13 @@ public class HealCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender.hasPermission("ehrenlos.heal")) {
+        if (sender.hasPermission("citybuild.command.heal")) {
             final Player player = (Player) sender;
             player.setHealth(20);
             player.setFoodLevel(20);
-            player.sendMessage(Citybuild.getPrefix() + "Du hast dich erfolgreich geheilt.");
+            player.sendMessage(Citybuild.getPrefix() + "§aDu hast dich erfolgreich geheilt.");
         } else {
-            sender.sendMessage(Citybuild.getPrefix() + "Du hast kein Recht diesen Befehl auszuführen!");
+            sender.sendMessage(Citybuild.getPrefix() + Citybuild.getNoPermissions());
         }
         return false;
     }
