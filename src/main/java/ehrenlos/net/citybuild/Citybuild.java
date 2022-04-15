@@ -80,7 +80,7 @@ public class Citybuild extends JavaPlugin {
         getCommand("invsee").setExecutor(new InvseeCommand());
         getCommand("heal").setExecutor(new HealCommand());
         getCommand("teleport").setExecutor(new TeleportCommand());
-        getCommand("whisper").setExecutor(new MsgCommand());
+        getCommand("msg").setExecutor(new MsgCommand());
         getCommand("playerinfo").setExecutor(new PlayerInfoCommand());
         getCommand("setwarp").setExecutor(new SetWarpCommand());
         getCommand("warp").setExecutor(new WarpCommand());

@@ -20,11 +20,10 @@ commands:
   vanish:
   ender:
   playerhelp:
-  whisper:
+  msg:
   spawn:
   setwarp:
   warp:
   setspawn:
   duty:
-  troll:
   delwarp:

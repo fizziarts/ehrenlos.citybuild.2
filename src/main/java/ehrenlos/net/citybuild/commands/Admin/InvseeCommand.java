@@ -25,11 +25,14 @@ public class InvseeCommand implements CommandExecutor {
                 }
 
                 if (args.length == 1) {
-                    Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
-                    player.openInventory(targetPlayer.getInventory());
+                    String name = args[0];
+                    Player targetPlayer = Bukkit.getServer().getPlayer(name);
+                    if (targetPlayer != null) {
+                        player.openInventory(targetPlayer.getInventory());
+                    }
                 }
             } else {
-                sender.sendMessage(Citybuild.getPrefix() + Citybuild.getNoPermissions());
+                player.sendMessage(Citybuild.getPrefix() + Citybuild.getNoPermissions());
             }
         }
         return false;

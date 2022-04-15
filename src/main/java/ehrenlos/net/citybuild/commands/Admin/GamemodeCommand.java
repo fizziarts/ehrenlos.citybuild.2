@@ -10,13 +10,20 @@ import org.bukkit.entity.Player;
 public class GamemodeCommand implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(Citybuild.getPrefix() + "§cDu musst ein Spieler sein");
+            return false;
+        }
+
         final Player player = (Player) sender;
-        if (player.hasPermission("citybuild.command.gm")) {
-            if (command.getName().equalsIgnoreCase("gm")) {
+
+        if (cmd.getName().equalsIgnoreCase("gm")) {
+            if (player.hasPermission("citybuild.command.gm")) {
                 if (args.length == 0) {
                     player.sendMessage(Citybuild.getPrefix() + "§7Bitte benutze §e/gm 0, 1, 2, 3");
                 }
+
                 if (args.length == 1) {
                     if (args[0].equalsIgnoreCase("0")) {
                         if (player.getGameMode() == GameMode.SURVIVAL) {
@@ -46,13 +53,11 @@ public class GamemodeCommand implements CommandExecutor {
                             player.setGameMode(GameMode.SPECTATOR);
                             player.sendMessage(Citybuild.getPrefix() + "§2Du befindest dich nun im Spectator Modus.");
                         }
-                    } else {
-                        player.sendMessage(Citybuild.getPrefix() + "§7Bitte benutze §e/gm 0, 1, 2, 3");
                     }
                 }
+            } else {
+                sender.sendMessage(Citybuild.getPrefix() + Citybuild.getNoPermissions());
             }
-        } else {
-            sender.sendMessage(Citybuild.getPrefix() + Citybuild.getNoPermissions());
         }
         return false;
     }

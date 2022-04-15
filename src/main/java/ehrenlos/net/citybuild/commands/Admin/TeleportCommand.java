@@ -10,15 +10,27 @@ import org.bukkit.entity.Player;
 public class TeleportCommand implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(Citybuild.getPrefix() + "§cDu musst ein Spieler sein");
+            return false;
+        }
 
-        try {
-            final Player player = (Player) sender;
-            Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
-            player.teleport(targetPlayer.getLocation());
-            player.sendMessage(Citybuild.getPrefix() + "§2Du hast dich zu §6" + args[0] + " §2teleportiert");
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        final Player player = (Player) sender;
+
+        if (cmd.getName().equalsIgnoreCase("teleport")) {
+            if (player.hasPermission("citybuild.command.teleport")) {
+                if (args.length == 1) {
+                    String name = args[0];
+                    Player targetPlayer = Bukkit.getServer().getPlayer(name);
+                    if (targetPlayer != null) {
+                        player.teleport(targetPlayer.getLocation());
+                    }
+                    player.sendMessage(Citybuild.getPrefix() + "§2Du hast dich zu §6" + args[0] + " §2teleportiert");
+                }
+            } else {
+                player.sendMessage(Citybuild.getPrefix() + Citybuild.getNoPermissions());
+            }
         }
         return false;
     }

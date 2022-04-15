@@ -11,15 +11,25 @@ import org.bukkit.entity.Player;
 public class ThunderCommand implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(Citybuild.getPrefix() + "§cDu musst ein Spieler sein");
+            return false;
+        }
+
         final Player player = (Player) sender;
-        if (player.hasPermission("citybuild.command.thunder")) {
-            for (World world : Bukkit.getWorlds()) {
-                world.strikeLightning(player.getLocation());
+
+        if (cmd.getName().equalsIgnoreCase("thunder")) {
+            if (player.hasPermission("citybuild.command.thunder")) {
+                if (args.length == 0) {
+                    for (World world : Bukkit.getWorlds()) {
+                        world.strikeLightning(player.getLocation());
+                    }
+                    player.sendMessage(Citybuild.getPrefix() + "§aDu hast das Wetter auf Gewitter gestellt");
+                }
+            } else {
+                player.sendMessage(Citybuild.getPrefix() + Citybuild.getNoPermissions());
             }
-            player.sendMessage(Citybuild.getPrefix() + "§aDu hast das Wetter auf Gewitter gestellt");
-        } else {
-            player.sendMessage(Citybuild.getPrefix() + Citybuild.getNoPermissions());
         }
         return false;
     }
