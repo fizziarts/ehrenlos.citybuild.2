@@ -1,4 +1,4 @@
-package ehrenlos.net.citybuild.commands;
+package ehrenlos.net.citybuild.commands.Admin;
 
 import ehrenlos.net.citybuild.Citybuild;
 import org.bukkit.command.Command;

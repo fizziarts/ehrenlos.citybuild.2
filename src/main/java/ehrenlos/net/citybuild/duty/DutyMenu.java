@@ -15,20 +15,20 @@ import java.util.Arrays;
 public class DutyMenu implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         final Player player = (Player) sender;
 
         Inventory inv = Bukkit.createInventory(null, 9, "§4Admin Tools!");
 
-        ItemStack playeholder = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
-        ItemMeta placeMeta = playeholder.getItemMeta();
+        ItemStack placeholder = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
+        ItemMeta placeMeta = placeholder.getItemMeta();
         placeMeta.setDisplayName("§r");
-        playeholder.setItemMeta(placeMeta);
+        placeholder.setItemMeta(placeMeta);
 
         // Lücken im Inventar mit Item ausfüllen
         for (int i = 0; i < inv.getSize(); i++) {
             if (inv.getItem(i) == null) {
-                inv.setItem(i, playeholder);
+                inv.setItem(i, placeholder);
             }
         }
 

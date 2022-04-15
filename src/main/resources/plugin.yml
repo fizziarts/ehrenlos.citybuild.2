@@ -1,4 +1,4 @@
-name: citybuild
+name: Citybuild
 version: 1.0
 main: ehrenlos.net.citybuild.Citybuild
 api-version: 1.16
@@ -13,8 +13,6 @@ commands:
   gm:
   heal:
   invsee:
-  dest:
-  nick:
   playerinfo:
   teleport:
   vanish:

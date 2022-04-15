@@ -16,13 +16,13 @@ import java.util.Arrays;
 public class DutyMenuListener implements Listener {
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent e) {
-        if (e.getView().getTitle().equals("§4Admin Tools!") && e.getCurrentItem() != null) {
+    public void onInventoryClick(InventoryClickEvent event) {
+        if (event.getView().getTitle().equals("§4Admin Tools!") && event.getCurrentItem() != null) {
 
-            e.setCancelled(true);
-            Player player = (Player) e.getWhoClicked();
+            event.setCancelled(true);
+            Player player = (Player) event.getWhoClicked();
 
-            switch (e.getRawSlot()) {
+            switch (event.getRawSlot()) {
                 case 3:
                     Inventory inv1 = Bukkit.createInventory(null, 9, "§4World Settings!");
 
@@ -98,24 +98,20 @@ public class DutyMenuListener implements Listener {
                         }
                     }
 
-                    try {
-                        if (player.getGameMode() == GameMode.SURVIVAL) {
-                            ItemStack gm = new ItemStack(Material.DIAMOND_CHESTPLATE);
-                            ItemMeta metaGM = gm.getItemMeta();
-                            metaGM.setDisplayName("§9Gamemode Creative");
-                            metaGM.setLore(Arrays.asList("Setzt dich in den Kreativmodus"));
-                            gm.setItemMeta(metaGM);
-                            inv2.setItem(0, gm);
-                        } else {
-                            ItemStack gm = new ItemStack(Material.DIAMOND_CHESTPLATE);
-                            ItemMeta metaGM = gm.getItemMeta();
-                            metaGM.setDisplayName("§9Gamemode Survival");
-                            metaGM.setLore(Arrays.asList("Setzt dich in den Überlebensmodus"));
-                            gm.setItemMeta(metaGM);
-                            inv2.setItem(0, gm);
-                        }
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
+                    if (player.getGameMode() == GameMode.SURVIVAL) {
+                        ItemStack gm = new ItemStack(Material.DIAMOND_CHESTPLATE);
+                        ItemMeta metaGM = gm.getItemMeta();
+                        metaGM.setDisplayName("§9Gamemode Creative");
+                        metaGM.setLore(Arrays.asList("Setzt dich in den Kreativmodus"));
+                        gm.setItemMeta(metaGM);
+                        inv2.setItem(0, gm);
+                    } else {
+                        ItemStack gm = new ItemStack(Material.DIAMOND_CHESTPLATE);
+                        ItemMeta metaGM = gm.getItemMeta();
+                        metaGM.setDisplayName("§9Gamemode Survival");
+                        metaGM.setLore(Arrays.asList("Setzt dich in den Überlebensmodus"));
+                        gm.setItemMeta(metaGM);
+                        inv2.setItem(0, gm);
                     }
 
                     ItemStack fly = new ItemStack(Material.FEATHER);

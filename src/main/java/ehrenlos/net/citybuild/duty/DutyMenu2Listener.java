@@ -9,35 +9,27 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 public class DutyMenu2Listener implements Listener {
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent e) {
-        if (e.getView().getTitle().equals("§4Player Commands!") && e.getCurrentItem() != null) {
+    public void onInventoryClick(InventoryClickEvent event) {
+        if (event.getView().getTitle().equals("§4Player Commands!") && event.getCurrentItem() != null) {
 
-            e.setCancelled(true);
-            Player player = (Player) e.getWhoClicked();
+            event.setCancelled(true);
+            Player player = (Player) event.getWhoClicked();
 
-            switch (e.getRawSlot()) {
+            switch (event.getRawSlot()) {
                 case 0:
-                    try {
-                        if (player.getGameMode() == GameMode.SURVIVAL) {
-                            player.setGameMode(GameMode.CREATIVE);
-                        } else {
-                            player.setGameMode(GameMode.SURVIVAL);
-                        }
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
+                    if (player.getGameMode() == GameMode.SURVIVAL) {
+                        player.setGameMode(GameMode.CREATIVE);
+                    } else {
+                        player.setGameMode(GameMode.SURVIVAL);
                     }
                     break;
                 case 1:
-                    try {
-                        if (player.isFlying()) {
-                            player.getPlayer().setAllowFlight(false);
-                            player.setFlying(false);
-                        } else {
-                            player.getPlayer().setAllowFlight(true);
-                            player.setFlying(true);
-                        }
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
+                    if (player.isFlying()) {
+                        player.setAllowFlight(false);
+                        player.setFlying(false);
+                    } else {
+                        player.setAllowFlight(true);
+                        player.setFlying(true);
                     }
                     break;
                 case 2:

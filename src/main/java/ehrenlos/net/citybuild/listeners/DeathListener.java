@@ -13,6 +13,6 @@ public class DeathListener implements Listener {
         Player player = event.getEntity();
         event.setDeathMessage(player.getName() + " ist gestorben!");
 
-        player.getPlayer().setGameMode(GameMode.SURVIVAL);
+        player.setGameMode(GameMode.SURVIVAL);
     }
 }

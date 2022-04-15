@@ -9,13 +9,13 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 public class DutyMenu1Listener implements Listener {
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent e) {
-        if (e.getView().getTitle().equals("§4World Settings!") && e.getCurrentItem() != null) {
+    public void onInventoryClick(InventoryClickEvent event) {
+        if (event.getView().getTitle().equals("§4World Settings!") && event.getCurrentItem() != null) {
 
-            e.setCancelled(true);
-            Player player = (Player) e.getWhoClicked();
+            event.setCancelled(true);
+            Player player = (Player) event.getWhoClicked();
 
-            switch (e.getRawSlot()) {
+            switch (event.getRawSlot()) {
                 case 0:
                     player.getWorld().setTime(1000);
                     break;

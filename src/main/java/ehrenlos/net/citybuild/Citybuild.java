@@ -9,7 +9,6 @@ import ehrenlos.net.citybuild.commands.Player.playerhelpCommand;
 import ehrenlos.net.citybuild.commands.Warp.DelWarpCommand;
 import ehrenlos.net.citybuild.commands.Warp.SetWarpCommand;
 import ehrenlos.net.citybuild.commands.Warp.WarpCommand;
-import ehrenlos.net.citybuild.commands.setSpawnCommand;
 import ehrenlos.net.citybuild.duty.DutyMenu;
 import ehrenlos.net.citybuild.duty.DutyMenu1Listener;
 import ehrenlos.net.citybuild.duty.DutyMenu2Listener;
@@ -25,8 +24,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Citybuild extends JavaPlugin {
 
     private static Citybuild instance;
-    private static String prefix = "§8[§6EhrenlosNet§8] §r";
-    private static String noPermissions = "§4Du hast dazu keine Rechte";
+    private static final String prefix = "§8[§6EhrenlosNet§8] §r";
+    private static final String noPermissions = "§4Du hast dazu keine Rechte";
 
     public static Citybuild getInstance() {
         return instance;
