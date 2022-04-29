@@ -1,46 +1,35 @@
 package ehrenlos.net.citybuild.duty;
 
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import java.util.List;
-
 public class DutyMenu2Listener implements Listener {
+
     @EventHandler
-    public void onClick(InventoryClickEvent e){
-        if (ChatColor.translateAlternateColorCodes('&', e.getView().getTitle()).equals(ChatColor.RED.toString() + "Player Commands!")
-                && e.getCurrentItem() != null){
+    public void onInventoryClick(InventoryClickEvent event) {
+        if (event.getView().getTitle().equals("§4Player Commands!") && event.getCurrentItem() != null) {
 
-            e.setCancelled(true);
-            Player player = (Player) e.getWhoClicked();
+            event.setCancelled(true);
+            Player player = (Player) event.getWhoClicked();
 
-            switch (e.getRawSlot()){
+            switch (event.getRawSlot()) {
                 case 0:
-                    try{
-                        if(player.getGameMode() == GameMode.SURVIVAL){
-                            player.setGameMode(GameMode.CREATIVE);
-                        }else{
-                            player.setGameMode(GameMode.SURVIVAL);
-                        }
-                    }finally {
-
+                    if (player.getGameMode() == GameMode.SURVIVAL) {
+                        player.setGameMode(GameMode.CREATIVE);
+                    } else {
+                        player.setGameMode(GameMode.SURVIVAL);
                     }
                     break;
                 case 1:
-                    try{
-                        if (player.isFlying()){
-                            player.getPlayer().setAllowFlight(false);
-                            player.setFlying(false);
-                        }else{
-                            player.getPlayer().setAllowFlight(true);
-                            player.setFlying(true);
-                        }
-                    }finally {
-
+                    if (player.isFlying()) {
+                        player.setAllowFlight(false);
+                        player.setFlying(false);
+                    } else {
+                        player.setAllowFlight(true);
+                        player.setFlying(true);
                     }
                     break;
                 case 2:
@@ -48,9 +37,7 @@ public class DutyMenu2Listener implements Listener {
                     break;
                 case 8://Close
                     player.closeInventory();
-                    return;
-                default:
-                    return;
+                    break;
             }
         }
     }

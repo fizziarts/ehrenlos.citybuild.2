@@ -1,31 +1,21 @@
 package ehrenlos.net.citybuild.duty;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.WeatherType;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 public class DutyMenu1Listener implements Listener {
+
     @EventHandler
-    public void onClick(InventoryClickEvent e){
-        if (ChatColor.translateAlternateColorCodes('&', e.getView().getTitle()).equals(ChatColor.RED.toString() + "World Settings!")
-                && e.getCurrentItem() != null){
+    public void onInventoryClick(InventoryClickEvent event) {
+        if (event.getView().getTitle().equals("§4World Settings!") && event.getCurrentItem() != null) {
 
-            e.setCancelled(true);
-            Player player = (Player) e.getWhoClicked();
+            event.setCancelled(true);
+            Player player = (Player) event.getWhoClicked();
 
-            switch (e.getRawSlot()){
+            switch (event.getRawSlot()) {
                 case 0:
                     player.getWorld().setTime(1000);
                     break;
@@ -43,9 +33,7 @@ public class DutyMenu1Listener implements Listener {
                     break;
                 case 8://Close
                     player.closeInventory();
-                    return;
-                default:
-                    return;
+                    break;
             }
         }
     }
